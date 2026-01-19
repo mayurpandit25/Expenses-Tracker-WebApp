@@ -25,7 +25,7 @@ services:
     build: ./
     container_name: "expensesapp"
     ports: 
-      - "8081:8080"
+      - "8081:8080"    #8081 because my jenkins works on the 8080 thats why i used 8081
     networks: 
       - expenses-app-nw
     environment: 

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expenses-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: expenses-app
+  template:
+    metadata:
+      labels:
+        app: expenses-app
+    spec:
+      containers:
+        - name: expenses-app
+          image: mayurpandit25/expensesapp:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/expenses_tracker?allowPublicKeyRetrieval=true&useSSL=false"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "Test@123"
